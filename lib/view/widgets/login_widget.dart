@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tonytony_mobile/view/widgets/build_sheet_widget.dart';
 
 class LoginWidget extends StatelessWidget {
   @override
@@ -37,7 +38,14 @@ class LoginWidget extends StatelessWidget {
                     'ログイン',
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(40))),
+                        builder: (context) => BuildSheet());
+                  },
                 ),
               ),
               Container(
