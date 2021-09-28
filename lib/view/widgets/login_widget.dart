@@ -35,7 +35,7 @@ class LoginWidget extends StatelessWidget {
                     primary: Colors.white.withOpacity(0),
                   ),
                   child: Text(
-                    'ログイン',
+                    'ログ',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
