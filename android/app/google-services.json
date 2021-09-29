@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1052239135826",
+    "project_id": "flutterriverpod-892bf",
+    "storage_bucket": "flutterriverpod-892bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052239135826:android:e53b029c1ba7005b1a4b8b",
+        "android_client_info": {
+          "package_name": "com.example.tonytony_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052239135826-nou89e2ne7e2op1r585rjbpecnhi8h6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvZT8sqWPLrPXHULbG5MSc5_dFpZbR_Bg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052239135826-nou89e2ne7e2op1r585rjbpecnhi8h6r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1052239135826-e3a2ra2dh93sm5971emli2bdr5coc4t6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

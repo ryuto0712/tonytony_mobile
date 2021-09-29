@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1052239135826-ct1qu57nof9vj874gkpe1pd71erpjad7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1052239135826-ct1qu57nof9vj874gkpe1pd71erpjad7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDj9-3KrfZA4ajYqNIfltclFyYadboRcUA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1052239135826</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tonytonyMobile</string>
+	<key>PROJECT_ID</key>
+	<string>flutterriverpod-892bf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutterriverpod-892bf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1052239135826:ios:d8b5be591cc77d191a4b8b</string>
+</dict>
+</plist>
