@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonytony_mobile/view/screens/home_screen.dart';
 
 class LoginModalWidget extends StatelessWidget {
   const LoginModalWidget({Key? key}) : super(key: key);
@@ -38,8 +39,15 @@ class LoginModalWidget extends StatelessWidget {
               )),
               Center(
                   child: TextButton(
-                onPressed: () {},
-                child: Text("とりあえずホームスクリーンへいく"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+                child: const Text("HomeScreen"),
               )),
             ],
           ),
