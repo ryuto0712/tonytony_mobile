@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonytony_mobile/view/pages/register_page.dart';
 import 'package:tonytony_mobile/view/screens/home_screen.dart';
 
 class LoginModalWidget extends StatelessWidget {
@@ -33,10 +34,19 @@ class LoginModalWidget extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   )),
               Center(
-                  child: Text(
-                'emailでログイン',
-                style: TextStyle(color: Colors.white),
-              )),
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegisterPage(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'emailでログイン',
+                        style: TextStyle(color: Colors.white),
+                      ))),
               Center(
                   child: TextButton(
                 onPressed: () {
