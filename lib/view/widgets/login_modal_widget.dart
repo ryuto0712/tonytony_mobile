@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tonytony_mobile/view/pages/register_page.dart';
 import 'package:tonytony_mobile/view/screens/home_screen.dart';
+import 'package:tonytony_mobile/view/screens/pages/login_page.dart';
 
 class LoginModalWidget extends StatelessWidget {
   const LoginModalWidget({Key? key}) : super(key: key);
@@ -36,10 +36,11 @@ class LoginModalWidget extends StatelessWidget {
               Center(
                   child: TextButton(
                       onPressed: () {
+                        //todo
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => RegisterPage(),
+                            builder: (context) => LoginPage(),
                           ),
                         );
                       },

@@ -18,7 +18,7 @@ class _IntroScreenState extends State<IntroScreen> {
     _controller = VideoPlayerController.asset(video)
       ..initialize().then((_) {
         _controller!.play();
-        _controller!.setLooping(true);
+        _controller!.setLooping(false);
         setState(() {});
       });
   }
