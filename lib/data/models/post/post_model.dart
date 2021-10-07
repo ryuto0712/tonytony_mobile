@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tonytony_mobile/data/models/post/post.dart';
+import 'package:tonytony_mobile/data/models/user/user.dart';
 
 final postModelProvider =
     ChangeNotifierProvider.autoDispose((ref) => PostModel());
@@ -14,6 +15,7 @@ class PostModel extends ChangeNotifier {
     init();
   }
   List<Post> postList = [];
+  User? user;
 
   //todo ？
   final Stream<QuerySnapshot<Map<String, dynamic>>> _usersStream =
@@ -91,7 +93,7 @@ class PostModel extends ChangeNotifier {
   Future<void> post() async {
     await FirebaseFirestore.instance.collection('postItem').add({
       //instanceにはfirebaseの色んな機能をまとめたinstanceでそのinstanceのUserを呼び出している
-      'userId': FirebaseAuth.instance.currentUser?.uid,
+      'userId': auth.FirebaseAuth.instance.currentUser?.uid,
       'message': _textEditingController.text,
     });
   }
