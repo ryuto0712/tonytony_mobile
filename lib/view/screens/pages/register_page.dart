@@ -25,7 +25,9 @@ class RegisterPage extends HookWidget {
           Text("${register_model.textEditingController.text}"),
           Text("${register_model.textEditingControllerPass.text}"),
           ElevatedButton(
+              //何かを呼ぶ時はとりあえずasync awaitをつける
               onPressed: () async {
+                //変数宣言する時はfinalつける癖
                 final result = await register_model.register();
                 if (result) {
                   Navigator.push(

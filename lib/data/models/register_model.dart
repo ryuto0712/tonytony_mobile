@@ -10,7 +10,9 @@ class RegisterModel extends ChangeNotifier {
   //コンストラクタ（インスタンスが呼び出された時に発動。インスタンスとは、実態であり、クラスを呼び出すときに使用される）
   RegisterModel() {
     init();
+    print('どうかな？？？？？');
   }
+
   TextEditingController _textEditingController = TextEditingController();
   get textEditingController => _textEditingController;
   TextEditingController _textEditingControllerPass = TextEditingController();

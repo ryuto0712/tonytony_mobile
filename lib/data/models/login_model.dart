@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final loginModelProvider =
+//　　　　　　　　　　　　　　　　　　　　　　　　　　　　　インスタンス化
     ChangeNotifierProvider.autoDispose((ref) => LoginModel());
 
 class LoginModel extends ChangeNotifier {
+  //コンストラクタ
   LoginModel() {
     init();
   }

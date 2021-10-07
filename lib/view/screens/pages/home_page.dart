@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -31,6 +32,7 @@ class HomePage extends HookWidget {
         ],
       ),
       body: Center(
+          //ListView.builderの方がパフォーマンスが良いとされている（スクロールして要素が必要になったらその分だけ読み込まれるから）
           child: ListView.builder(
         itemCount: post_model.postList.length,
         itemBuilder: (BuildContext context, int index) {
@@ -44,6 +46,7 @@ class HomePage extends HookWidget {
         onPressed: () {
           showDialog(
               context: context,
+              //todo contextにはここまでの履歴（必要な情報）が全て詰まっている
               builder: (context) {
                 return AlertDialog(
                   content: SizedBox(
@@ -61,6 +64,7 @@ class HomePage extends HookWidget {
                         ElevatedButton(
                             onPressed: () async {
                               await model.post();
+                              print(FirebaseAuth.instance.currentUser?.uid);
                             },
                             child: Text('投稿'))
                       ],
