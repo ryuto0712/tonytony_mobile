@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tonytony_mobile/data/models/post/post.dart';
+import 'package:tonytony_mobile/data/models/user/user.dart';
 
 final postModelProvider =
     ChangeNotifierProvider.autoDispose((ref) => PostModel());
@@ -14,11 +15,13 @@ class PostModel extends ChangeNotifier {
     init();
   }
   List<Post> postList = [];
+  User? user;
 
   //todo ？
   final Stream<QuerySnapshot<Map<String, dynamic>>> _usersStream =
       FirebaseFirestore.instance.collection('postItem').snapshots();
-
+//以下はユーザー情報をデータベースから取ってくる処理
+// それぞれの投稿に紐づくユーザー情報を得るためにそれぞれの投稿のユーザーIDが必要になる
   Future<void> fetchUser(String id) async {
     //todo ？
     User toPost(DocumentSnapshot e) {
@@ -66,6 +69,7 @@ class PostModel extends ChangeNotifier {
     final snapShot =
         //データベースのコレクションを全てとってくる（返り値の型がFutureなのがget,streamなのがsnapshot）
         await FirebaseFirestore.instance.collection('postItem').get();
+    //docs = Documents（firebaseはdocumentでできている）
     postList = snapShot.docs.map((e) => toPost(e)).toList();
     // print(postList);
     // _usersStream.listen((QuerySnapshot snapshot) {
@@ -88,10 +92,11 @@ class PostModel extends ChangeNotifier {
     _textEditingController.addListener(notifyListeners);
   }
 
+  //以下の処理で、firebaseに保存
   Future<void> post() async {
     await FirebaseFirestore.instance.collection('postItem').add({
       //instanceにはfirebaseの色んな機能をまとめたinstanceでそのinstanceのUserを呼び出している
-      'userId': FirebaseAuth.instance.currentUser?.uid,
+      'userId': auth.FirebaseAuth.instance.currentUser?.uid,
       'message': _textEditingController.text,
     });
   }

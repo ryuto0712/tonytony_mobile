@@ -11,8 +11,7 @@ class HomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = useProvider(postModelProvider);
-    final post_model = useProvider(postModelProvider)..init();
+    final model = useProvider(postModelProvider)..init();
     // ..fetchPostList();
 
     return Scaffold(
@@ -34,9 +33,9 @@ class HomePage extends HookWidget {
       body: Center(
           //ListView.builderの方がパフォーマンスが良いとされている（スクロールして要素が必要になったらその分だけ読み込まれるから）
           child: ListView.builder(
-        itemCount: post_model.postList.length,
+        itemCount: model.postList.length,
         itemBuilder: (BuildContext context, int index) {
-          final post = post_model.postList[index];
+          final post = model.postList[index];
           return ListTile(
             title: Text(post.message ?? ""),
           );
