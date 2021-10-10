@@ -7,10 +7,11 @@ final loginModelProvider =
     ChangeNotifierProvider.autoDispose((ref) => LoginModel());
 
 class LoginModel extends ChangeNotifier {
-  //コンストラクタ
+  //コンストラクタ（インスタンスが生成された時に発動する）
   LoginModel() {
     init();
   }
+  //_textEditingControllerは箱。lisnerという機能がついている
   TextEditingController _textEditingController = TextEditingController();
   get textEditingController => _textEditingController;
   TextEditingController _textEditingControllerPass = TextEditingController();

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+//変数名は小文字始まり
 final registerModelProvider =
     ChangeNotifierProvider.autoDispose((ref) => RegisterModel());
 
