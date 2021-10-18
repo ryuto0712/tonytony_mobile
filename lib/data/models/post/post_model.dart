@@ -22,13 +22,13 @@ class PostModel extends ChangeNotifier {
       FirebaseFirestore.instance.collection('postItem').snapshots();
 //以下はユーザー情報をデータベースから取ってくる処理
 // それぞれの投稿に紐づくユーザー情報を得るためにそれぞれの投稿のユーザーIDが必要になる
-  Future<void> fetchUser(String id) async {
+  Future<User> fetchUser(String id) async {
     //todo ？
     User toPost(DocumentSnapshot e) {
       final data = Map.from(e.data() as Map<String, dynamic>);
       if (data != null) {
         return User(
-          userName: data["username"],
+          userName: data["userName"],
           iconUrl: data["iconUrl"],
         );
       }
@@ -38,7 +38,7 @@ class PostModel extends ChangeNotifier {
     final snapShot =
         //データベースのコレクションを全てとってくる（返り値の型がFutureなのがget,streamなのがsnapshot）
         await FirebaseFirestore.instance.collection('user').doc(id).get();
-    user = toPost(snapShot);
+    return toPost(snapShot);
 
     print(user);
     // _usersStream.listen((QuerySnapshot snapshot) {
@@ -59,7 +59,7 @@ class PostModel extends ChangeNotifier {
       final data = Map.from(e.data() as Map<String, dynamic>);
       if (data != null) {
         return Post(
-          message: data["message"],
+          message: data[PostField.message],
           userId: data["userId"],
         );
       }
@@ -71,6 +71,10 @@ class PostModel extends ChangeNotifier {
         await FirebaseFirestore.instance.collection('postItem').get();
     //docs = Documents（firebaseはdocumentでできている）
     postList = snapShot.docs.map((e) => toPost(e)).toList();
+    for (final posttee in postList) {
+      posttee.user = await fetchUser(posttee.userId);
+      // print(posttee.user!.userName);
+    }
     // print(postList);
     // _usersStream.listen((QuerySnapshot snapshot) {
     //   final List<Post> posts = snapshot.docs.map((DocumentSnapshot document) {
