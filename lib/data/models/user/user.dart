@@ -1,5 +1,5 @@
 class User {
-  User({this.userName, this.iconUrl});
+  User({this.userName, this.userIcon});
   String? userName;
-  String? iconUrl;
+  String? userIcon;
 }

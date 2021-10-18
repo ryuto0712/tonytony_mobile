@@ -5,12 +5,18 @@ import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tonytony_mobile/data/models/user/user.dart';
 
-final userModelProvider =
-    ChangeNotifierProvider.autoDispose((ref) => UserModel());
+final profileModelProvider =
+    ChangeNotifierProvider.autoDispose((ref) => ProfileModel());
 
-class UserModel extends ChangeNotifier {
+class ProfileModel extends ChangeNotifier {
+  TextEditingController _userNameController = TextEditingController();
+  get userNameController => _userNameController;
+
+  TextEditingController _profileController = TextEditingController();
+  get profileController => _profileController;
+
   //コンストラクタとは、インスタンス生成時に作られるメソッドである。
-  UserModel() {
+  ProfileModel() {
     init();
   }
   User? user;
@@ -22,10 +28,10 @@ class UserModel extends ChangeNotifier {
       if (data != null) {
         return User(
           userName: data["username"],
-          iconUrl: data["iconUrl"],
+          userIcon: data["iconUrl"],
         );
       }
-      return User(userName: 'hahaha', iconUrl: "hello");
+      return User(userName: 'hahaha', userIcon: "hello");
     }
 
     final snapShot =
@@ -49,19 +55,9 @@ class UserModel extends ChangeNotifier {
     // });
   }
 
-  TextEditingController _textEditingController = TextEditingController();
-  get textEditingController => _textEditingController;
-
   Future<void> init() async {
     await fetchPostList();
-    _textEditingController.addListener(notifyListeners);
-  }
-
-  Future<void> post() async {
-    await FirebaseFirestore.instance.collection('postItem').add({
-      //instanceにはfirebaseの色んな機能をまとめたinstanceでそのinstanceのUserを呼び出している
-      'userId': auth.FirebaseAuth.instance.currentUser?.uid,
-      'message': _textEditingController.text,
-    });
+    _userNameController.addListener(notifyListeners);
+    _profileController.addListener(notifyListeners);
   }
 }

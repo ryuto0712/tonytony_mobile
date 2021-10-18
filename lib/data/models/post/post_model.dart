@@ -29,10 +29,10 @@ class PostModel extends ChangeNotifier {
       if (data != null) {
         return User(
           userName: data["userName"],
-          iconUrl: data["iconUrl"],
+          userIcon: data["userIcon"],
         );
       }
-      return User(userName: 'hahaha', iconUrl: "hello");
+      return User(userName: 'hahaha', userIcon: "hello");
     }
 
     final snapShot =
@@ -59,9 +59,7 @@ class PostModel extends ChangeNotifier {
       final data = Map.from(e.data() as Map<String, dynamic>);
       if (data != null) {
         return Post(
-          message: data[PostField.message],
-          userId: data["userId"],
-        );
+            message: data[PostField.message], userId: data["userId"], id: e.id);
       }
       return Post(userId: 'hahaha', message: "hello");
     }
@@ -89,7 +87,8 @@ class PostModel extends ChangeNotifier {
   }
 
   TextEditingController _textEditingController = TextEditingController();
-  get textEditingController => _textEditingController;
+  TextEditingController get textEditingController => _textEditingController;
+  // set textEditingController(String value) => _textEditingController;
 
   Future<void> init() async {
     await fetchPostList();
@@ -101,6 +100,16 @@ class PostModel extends ChangeNotifier {
     await FirebaseFirestore.instance.collection('postItem').add({
       //instanceにはfirebaseの色んな機能をまとめたinstanceでそのinstanceのUserを呼び出している
       'userId': auth.FirebaseAuth.instance.currentUser?.uid,
+      'message': _textEditingController.text,
+    });
+  }
+
+  deletePost(id) async {
+    await FirebaseFirestore.instance.collection('postItem').doc(id).delete();
+  }
+
+  update(id) async {
+    await FirebaseFirestore.instance.collection('postItem').doc(id).update({
       'message': _textEditingController.text,
     });
   }
